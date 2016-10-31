@@ -1,0 +1,18 @@
+package ru.innopois.university.ramis.dao.impl;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+/**
+ * Created by innopolis on 31.10.16.
+ */
+public abstract class AbstractRepository {
+
+    static Connection connection;
+
+    protected static void getConnection() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
+        Class.forName("org.postgresql.Driver").newInstance();
+        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
+    }
+}
