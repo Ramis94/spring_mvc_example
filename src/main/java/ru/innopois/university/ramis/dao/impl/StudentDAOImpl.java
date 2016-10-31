@@ -95,6 +95,7 @@ public class StudentDAOImpl extends AbstractRepository implements StudentDAO {
         String sql = "DELETE FROM \"Students\" WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
     }
 
     /**
