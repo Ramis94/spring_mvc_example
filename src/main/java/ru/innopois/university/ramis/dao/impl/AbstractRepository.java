@@ -11,6 +11,13 @@ public abstract class AbstractRepository {
 
     static Connection connection;
 
+    /**
+     * Получение соединения с БД
+     * @throws ClassNotFoundException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws SQLException
+     */
     protected static void getConnection() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
         Class.forName("org.postgresql.Driver").newInstance();
         connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");

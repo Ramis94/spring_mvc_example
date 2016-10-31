@@ -1,10 +1,13 @@
 package ru.innopois.university.ramis.dao.impl;
 
 import org.springframework.stereotype.Repository;
-import ru.innopois.university.ramis.dao.UserDAO;
+import ru.innopois.university.ramis.dao.StudentDAO;
 import ru.innopois.university.ramis.model.Student;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,7 @@ import java.util.List;
  * Created by innopolis on 31.10.16.
  */
 @Repository
-public class UserDAOImpl extends AbstractRepository implements UserDAO {
+public class StudentDAOImpl extends AbstractRepository implements StudentDAO {
 
     /*private List<Student> students = new ArrayList<>();
 
@@ -25,6 +28,9 @@ public class UserDAOImpl extends AbstractRepository implements UserDAO {
         students.add(new Student(6, "Марат", "Иванов", "М", new Date(333333333)));
     }*/
 
+    /**
+     * В блоке соединяемся с БД
+     */
     static {
         try {
             AbstractRepository.getConnection();
@@ -33,6 +39,11 @@ public class UserDAOImpl extends AbstractRepository implements UserDAO {
         }
     }
 
+    /**
+     * Получение списка студентов из БД
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<Student> getStudentList() throws SQLException {
         List<Student> students = new ArrayList<>();
@@ -51,6 +62,12 @@ public class UserDAOImpl extends AbstractRepository implements UserDAO {
         return students;
     }
 
+    /**
+     * Получение студента по имени
+     * @param firstName
+     * @return
+     * @throws SQLException
+     */
     @Override
     public Student getStudentByName(String firstName) throws SQLException {
         String sql = "SELECT * FROM \"Students\" WHERE firstname= ?";
@@ -68,6 +85,11 @@ public class UserDAOImpl extends AbstractRepository implements UserDAO {
         return student;
     }
 
+    /**
+     * Удаление студента по id
+     * @param id
+     * @throws SQLException
+     */
     @Override
     public void deleteStudent(Integer id) throws SQLException {
         String sql = "DELETE FROM \"Students\" WHERE id = ?";
@@ -75,6 +97,11 @@ public class UserDAOImpl extends AbstractRepository implements UserDAO {
         preparedStatement.setInt(1, id);
     }
 
+    /**
+     * Добавление студента
+     * @param student
+     * @throws SQLException
+     */
     @Override
     public void addStudent(Student student) throws SQLException {
         String sql = "INSERT INTO \"Students\"(firstname, lastname, sex, borndate) VALUES (?, ?, ?, ?)";

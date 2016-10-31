@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
+    /**
+     * Загрузка главной страницы
+     * @return
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(){
         return "index";
