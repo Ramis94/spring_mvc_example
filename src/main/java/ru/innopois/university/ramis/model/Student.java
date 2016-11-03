@@ -79,4 +79,29 @@ public class Student {
                 ", bornDate=" + bornDate +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        if (id != null ? !id.equals(student.id) : student.id != null) return false;
+        if (firstName != null ? !firstName.equals(student.firstName) : student.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(student.lastName) : student.lastName != null) return false;
+        if (sex != null ? !sex.equals(student.sex) : student.sex != null) return false;
+        return bornDate != null ? bornDate.equals(student.bornDate) : student.bornDate == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + (bornDate != null ? bornDate.hashCode() : 0);
+        return result;
+    }
 }

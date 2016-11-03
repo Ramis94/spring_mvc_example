@@ -59,4 +59,9 @@ public class StudentServiceImpl implements StudentService {
     public void addStudent(Student student) throws SQLException {
         studentDAO.addStudent(student);
     }
+
+    @Override
+    public void updateStudent(Student student) throws SQLException {
+        studentDAO.updateStudent(student);
+    }
 }

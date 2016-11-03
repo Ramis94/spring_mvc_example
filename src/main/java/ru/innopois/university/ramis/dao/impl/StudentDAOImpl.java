@@ -15,7 +15,7 @@ import java.util.List;
  * Created by innopolis on 31.10.16.
  */
 @Repository
-public class StudentDAOImpl extends AbstractRepository implements StudentDAO {
+public class    StudentDAOImpl extends AbstractRepository implements StudentDAO {
 
     /*private List<Student> students = new ArrayList<>();
 
@@ -27,17 +27,6 @@ public class StudentDAOImpl extends AbstractRepository implements StudentDAO {
         students.add(new Student(5, "Стас", "Иванов", "М", new Date(2222)));
         students.add(new Student(6, "Марат", "Иванов", "М", new Date(333333333)));
     }*/
-
-    /**
-     * В блоке соединяемся с БД
-     */
-    static {
-        try {
-            AbstractRepository.getConnection();
-        } catch (ClassNotFoundException | IllegalAccessException | SQLException | InstantiationException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Получение списка студентов из БД
@@ -112,5 +101,17 @@ public class StudentDAOImpl extends AbstractRepository implements StudentDAO {
         preparedStatement.setString(3, student.getSex());
         preparedStatement.setDate(4, student.getBornDate());
         preparedStatement.executeUpdate();
+    }
+
+    @Override
+    public void updateStudent(Student student) throws SQLException {
+        String sql = "UPDATE \"Students\" SET firstname=?, lastname=?, sex=?, borndate=? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, student.getFirstName());
+        preparedStatement.setString(2, student.getLastName());
+        preparedStatement.setString(3, student.getSex());
+        preparedStatement.setDate(4, student.getBornDate());
+        preparedStatement.setInt(5, student.getId());
+        preparedStatement.executeQuery();
     }
 }

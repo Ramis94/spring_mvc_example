@@ -41,4 +41,6 @@ public interface StudentService {
      * @throws SQLException
      */
     void addStudent(Student student) throws SQLException;
+
+    void updateStudent(Student student) throws SQLException;
 }

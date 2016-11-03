@@ -35,7 +35,7 @@ public class StudentController {
     public ModelAndView getAllStudents() throws SQLException {
         List<Student> studentList = studentService.getStudentList();
 
-        ModelAndView modelAndView = new ModelAndView("list");
+        ModelAndView modelAndView = new ModelAndView("listStudent");
         modelAndView.addObject("list", studentList);
 
         return modelAndView;
@@ -119,9 +119,15 @@ public class StudentController {
                 Collections.sort(studentList, (o1, o2) -> o1.getBornDate().compareTo(o2.getBornDate()));
                 break;
         }
-        ModelAndView modelAndView = new ModelAndView("list");
+        ModelAndView modelAndView = new ModelAndView("listStudent");
         modelAndView.addObject("list", studentList);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public String updateStudent(@ModelAttribute("updateStudentForm") @Validated Student student, BindingResult bindingResult) throws SQLException {
+        studentService.updateStudent(student);
+        return "redirect:/student" + student.getFirstName();
     }
 
 }
