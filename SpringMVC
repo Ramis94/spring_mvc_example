@@ -1,0 +1,15 @@
+Это набор инструментов для быстрой разработки приложения в стиле MVC
+
+Ключевая фигура это DisatcherServlet - предназначен для диспетчиреализации входящих запросов и преренаправлние их в соответствующий обработчик.
+
+Controller - основной обработчик запросов. @Controller
+@RequestMapping() - маппим урл
+@PostMapping
+@GetMapping
+
+ViewResolver - по имени находит представление
+
+@RequestMapping("/student/{studName}")
+public String getStudent(@PathVariable studName)
+
+Для определения урлов, можно использовать регулярные выражения
