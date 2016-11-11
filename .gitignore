@@ -11,3 +11,7 @@ application.log
 ndc.log
 gradle
 .gradle
+client/build
+common/build
+server/build
+out

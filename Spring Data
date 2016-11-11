@@ -1,0 +1,51 @@
+Spring Data - проект инструментов для работы с данными
+CrudRepository
+
+Spring Remoting - веб сервис
+Удаленное выполнение и передача управления
+RMI(удаленное исполнение методов) - интерфейс для java, позволяет в контроллере использовать интерфейс сервиса, а вызывать методы в реализации
+war1(client) - Client
+common - интерфейсы сервисов, логические модели
+war2(server) - Сервисы, ДАО, Entity
+
+@Controller
+class StudentController{
+    @Autowired
+    StudentService service; //заинжектит прокси
+}
+
+JMS - java message service - спецификация по работе с сообщениями.
+Produser - отправляет сообщения
+                                    Provider - содержит в себе спецификацию JMS
+Consumer - получает сообщения
+
+PTP - point to point - сообщения от Produser отправляются в очередь
+
+Publisher/Subscriber - побликует свое сообщение в topic, все кто подписан на topic, получают сообщения
+
+
+     (public topic)        /-> Subscriber
+Publisher -> JMS provider -> Subscriber
+                           \-> Subscriber
+
+сообщение содержит:
+1) header - заголовок
+2) properties - набор свойств
+3) body - тело сообщения
+
+JMS 1.1
+    1) ConnectionFactory - он будет един
+    2) Connection
+    3) Session
+        Consumer
+        Produser
+        Message
+
+JMS 2.0
+    1) ConnectionFactory - он будет един
+        2) Connection   \
+                            JMSContext
+        3) Session      /
+            Consumer
+            Produser
+            Message
