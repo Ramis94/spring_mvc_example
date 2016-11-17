@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by innopolis on 02.11.16.
  */
-public class UsersModel implements Serializable {
+public class UsersModel extends AbstractEntityModel implements Serializable {
 
     private Integer id;
 

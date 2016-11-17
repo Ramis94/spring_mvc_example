@@ -75,7 +75,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void updateStudent(StudentModel student) throws SQLException {
-        //studentRepository.updateStudentById(student);
+        studentRepository.updateStudentById(student.getId(), student.getFirstName(), student.getLastName()
+                , student.getSex(), student.getBornDate());
     }
 
     @Override

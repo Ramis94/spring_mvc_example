@@ -46,9 +46,10 @@
     <jpa:repositories base-package="ru.innopolis.university.ramis.repository" entity-manager-factory-ref="emf"/>
 
     <bean id="userService" class="ru.innopolis.university.ramis.service.impl.UserServiceImpl"/>
+    <bean id="userServiceImplDecorator" class="ru.innopolis.university.ramis.service.impl.UserServiceImplDecorator"/>
     <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
         <property name="serviceName" value="UserService"/>
-        <property name="service" ref="userService"/>
+        <property name="service" ref="userServiceImplDecorator"/>
         <property name="serviceInterface" value="ru.innopolis.university.ramis.service.UserService"/>
         <property name="registryPort" value="1199"/>
     </bean>

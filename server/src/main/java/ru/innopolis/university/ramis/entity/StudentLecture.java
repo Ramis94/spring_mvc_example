@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "student_lecture")
-public class StudentLecture {
+public class StudentLecture extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "student_id")

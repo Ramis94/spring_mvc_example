@@ -1,8 +1,13 @@
 package ru.innopolis.university.ramis.repository;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import ru.innopolis.university.ramis.entity.Student;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,5 +31,9 @@ public interface StudentRepository extends CrudRepository<Student, Integer>{
      */
     Student findStudentByFirstName(String firstName) throws SQLException;
 
-    //void updateStudentById(Student student) throws SQLException;
+    @Transactional
+    @Modifying
+    @Query("update Student s set s.firstName = :firstName, s.lastName = :lastName, s.sex = :sex, bornDate = :bornDate where id = :id")
+    void updateStudentById(@Param("id") Integer id, @Param("firstName") String firstName,
+                           @Param("lastName") String lastName, @Param("sex") String sex, @Param("bornDate") Date bornDate) throws SQLException;
 }

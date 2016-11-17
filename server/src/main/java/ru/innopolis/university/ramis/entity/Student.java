@@ -10,7 +10,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "Students")
 @NamedQuery(name = "Student.getAll", query = "SELECT s from Student s")
-public class Student {
+public class Student extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

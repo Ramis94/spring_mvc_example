@@ -12,12 +12,13 @@
     <title>Title</title>
 </head>
 <body>
-        <form action="/student/update" method="POST">
-                ID <input type="text" value="${student.id}" hidden><br>
-                Имя <input type="text" value="${student.firstName}"><br>
-                Фамилия <input type="text" value="${student.lastName}"><br>
-                Пол <input type="text" value="${student.sex}"><br>
-                Дата рождения <input type="text" value="${student.bornDate}"><br>
+        <form action="/student/update" method="POST" name="studentForm">
+                <input type="text" name="id" value="${student.id}" hidden><br>
+                <input type="text" name="version" value="${student.version}" hidden><br>
+                Имя <input type="text" name="firstName" value="${student.firstName}"><br>
+                Фамилия <input type="text" name="lastName" value="${student.lastName}"><br>
+                Пол <input type="text" name="sex" value="${student.sex}"><br>
+                Дата рождения <input type="date" name="bornDate" value="${student.bornDate}"><br>
                 <input type="submit" value="Обновить" />
         </form>
 </body>

@@ -1,2 +1,5 @@
 rootProject.name = 'springmvc'
 
+include "client"
+include "server"
+include 'common'

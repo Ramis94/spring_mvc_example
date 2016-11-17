@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by innopolis on 01.11.16.
  */
-public class StudentLectureModel implements Serializable {
+public class StudentLectureModel extends AbstractEntityModel implements Serializable {
 
     private StudentModel student_id;
 

@@ -106,10 +106,10 @@ public class StudentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String updateStudent(@ModelAttribute("updateStudentForm") @Validated StudentModel student, BindingResult bindingResult) throws SQLException {
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateStudent(@ModelAttribute("studentForm") @Validated StudentModel student, BindingResult bindingResult) throws SQLException {
         studentService.updateStudent(student);
-        return "redirect:/student" + student.getFirstName();
+        return "redirect:/student/" + student.getFirstName();
     }
 
 }

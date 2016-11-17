@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by innopolis on 31.10.16.
  * Сущность Студент
  */
-public class StudentModel implements Serializable {
+public class StudentModel extends AbstractEntityModel implements Serializable {
 
     private Integer id;
 

@@ -8,7 +8,7 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "lecture")
-public class Lecture {
+public class Lecture extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

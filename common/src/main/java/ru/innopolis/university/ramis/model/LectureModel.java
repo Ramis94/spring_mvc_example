@@ -6,7 +6,7 @@ import java.sql.Date;
 /**
  * Created by innopolis on 01.11.16.
  */
-public class LectureModel implements Serializable {
+public class LectureModel extends AbstractEntityModel implements Serializable {
 
     private Integer id;
 
